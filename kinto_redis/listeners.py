@@ -21,7 +21,7 @@ class Listener(ListenerBase):
 
     def __call__(self, event):
         try:
-            payload = json.dumps(event.payload)
+            payload = json.dumps({"payload":event.payload,"impacted_objects":event.impacted_objects})
         except TypeError:
             logger.error("Unable to dump the payload", exc_info=True)
             return
